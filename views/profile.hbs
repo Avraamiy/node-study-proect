@@ -1,0 +1,41 @@
+<h1>Profile</h1>
+
+<div class="row">
+    <div class="col s6">
+
+        {{#if user.imageUrl}}
+            <img class="avatar"
+                 src="/{{user.imageUrl}}"
+                 alt="avatar-{{user.name}}"
+            >
+        {{else}}
+            <p>No photo</p>
+        {{/if}}
+    </div>
+    <div class="col s6">
+        <p style="margin-bottom: 3rem;">You email: <strong>{{user.email}}</strong></p>
+        <form action="/profile" method="post" enctype="multipart/form-data">
+            <div class="input-field">
+                <input id="name" name="name" type="text" class="validate" value="{{user.name}}" required>
+                <label for="name">Change name</label>
+                <span class="helper-text" data-error="Enter a name"></span>
+            </div>
+
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Avatar</span>
+                        <input type="file" name="avatar">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input  class="file-path validate" type="text">
+                    </div>
+                </div>
+
+
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+
+            <button class="btn" type="submit">Change</button>
+
+        </form>
+    </div>
+</div>

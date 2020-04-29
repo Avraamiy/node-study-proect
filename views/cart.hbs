@@ -1,0 +1,47 @@
+<div id="cart">
+    <h1>Cart</h1>
+    {{#if courses.length}}
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Count</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {{#each courses}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{count}}</td>
+                    <td>{{price}}</td>
+
+                    <td>
+                        <button class="btn btm-small js-remove" data-csrf="{{@root.csrf}}" data-id="{{id}}">Delete
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn-floating btn-small waves-effect waves-light red ">
+                            <i class="material-icons js-add-count" data-id="{{id}}" data-csrf="{{@root.csrf}}"
+                               style="font-size: 0.8rem;font-weight: bold;">add</i></button>
+                    <td/>
+                </tr>
+            {{/each}}
+
+            </tbody>
+        </table>
+        <div class="make-order">
+            <p><strong>Total price: </strong><span class="price">{{price}}</span></p>
+            <a class="btn blue" href="/courses">Back to the courses</a>
+            <form action="/orders" method="post">
+                <input type="hidden" name="_csrf" value="{{csrf}}">
+                <button class="btn" type="submit">Make an order</button>
+            </form>
+        </div>
+
+    {{else}}
+        <p>Cart is empty</p>
+    {{/if}}
+</div>

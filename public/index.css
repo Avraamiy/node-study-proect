@@ -1,0 +1,69 @@
+.nav-wrapper {
+    padding: 0 2rem;
+    margin: 0;
+}
+
+.price {
+    font-size: 2rem;
+}
+
+.course {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.course h1 {
+    margoin-bottom: 2rem;
+}
+
+.course img {
+     max-width: 600px;
+    height: auto;
+}
+
+.course .price.big {
+    font-size: 2rem;
+}
+
+.card-action.action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.make-order{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-around;
+}
+.make-order button {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+}
+.make-order a {
+    margin-top: 1rem;
+}
+
+.course-form {
+    margin-bottom: 2rem;
+}
+
+.auth {
+    margin-top: 1rem;
+}
+
+.alert {
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: rgba(255, 0, 0, .3);
+    color: white;
+}
+
+.avatar {
+    height: auto;
+    max-width: 300px;
+}
