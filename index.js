@@ -22,6 +22,10 @@ const fileMiddleware = require('./middlerware/file')
 const varMiddleware = require('./middlerware/variables')
 const userMiddleware = require('./middlerware/user')
 
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+
 const app = express()
 
 const store = new MongoStore({
@@ -38,6 +42,10 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
+
+app.engine('hbs', expressHandlebars({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}))
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/images',express.static(path.join((__dirname), 'images')))

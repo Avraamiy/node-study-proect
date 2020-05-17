@@ -3,18 +3,18 @@
     {{#each orders}}
         <div class="row">
             <div class="col s6 offset-s3">
-                <div class="cart">
+                <div class="cart z-depth-2 " style="padding: 1rem">
                     <div class="cart-content">
             <span class="cart-title">
-                 <p>Order: <small>{{_id}}</small></p>
+                 <p>Order: №<strong>{{_id}}</strong></p>
             </span>
                         <p class="date">{{date}}</p>
-                        <p><em>{{user.name}}</em>
+                        <p><em>{{user.userId.name}}</em>
                         <td>({{user.userId.email}})
 
                         <ol>
                             {{#each courses}}
-                                <li>{{course.title}}x{{count}}</li>
+                                <li><strong>{{course.title}} - </strong>count:&nbsp;<strong>{{count}}</strong></li>
                             {{/each}}
                         </ol>
                         <hr>

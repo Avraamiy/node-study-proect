@@ -5,12 +5,26 @@ document.querySelectorAll('.price').forEach((node) => {
     }).format(node.textContent)
 })
 
- const toCurrency = price => {
+const toDate = date => {
+    return new Intl.DateTimeFormat('ru-RU', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    }).format(new Date(date))
+}
+
+document.querySelectorAll('.date').forEach(node => {
+    node.textContent = toDate(node.textContent)
+})
+
+const toCurrency = price => {
     return new Intl.NumberFormat('ru-RU', {
         currency: 'rub',
         style: 'currency'
     }).format(price)
- }
+}
 let el = document.querySelectorAll('.tabs')
 const instance = M.Tabs.init(el);
 
@@ -39,8 +53,14 @@ if ($cart) {
                         <button class="btn btm-small js-remove" data-csrf="${csrf}" data-id="${c.id}">Delete</button>
                     </td>
                     <td>
-                        <button class="btn-floating btn-small waves-effect waves-light red ">
-                            <i class="material-icons js-add-count" data-id="${c.id}" data-csrf="${csrf}" style="font-size: 0.8rem;">add</i></button>
+                        <button class="btn-floating btn-small waves-effect waves-light red">
+                        <i class="material-icons js-add-count"
+                           data-id="${c.id}"
+                           data-csrf="${csrf}"
+                        >
+                        add
+                        </i>
+                   </button>
                     <td/>
                 </tr>`
                         }).join('')
@@ -50,8 +70,7 @@ if ($cart) {
                         $cart.innerHTML = '<p>Cart is empty</p>'
                     }
                 })
-        }
-        else if(evt.target.classList.contains('js-add-count')) {
+        } else if (evt.target.classList.contains('js-add-count')) {
             const id = evt.target.dataset.id
             const csrf = evt.target.dataset.csrf
             fetch('/cart/add/' + id, {
@@ -72,8 +91,15 @@ if ($cart) {
                         <button class="btn btm-small js-remove" data-id="${c.id}">Delete</button>
                     </td>
                     <td>
-                        <button class="btn-floating btn-small waves-effect waves-light red ">
-                            <i class="material-icons js-add-count" data-id="${c.id}" style="font-size: 0.8rem;">add</i></button>
+                   
+                   <button class="btn-floating btn-small waves-effect waves-light red">
+                        <i class="material-icons js-add-count"
+                           data-id="${c.id}"
+                           data-csrf="${csrf}"
+                        >
+                        add
+                        </i>
+                   </button>
                     <td/>
                 </tr>`
                         }).join('')
